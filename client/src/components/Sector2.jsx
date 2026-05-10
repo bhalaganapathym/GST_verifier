@@ -6,7 +6,7 @@ import {
 
 // ── Hit the backend OCR endpoint ────────────────────────────────────────────
 async function ocrInvoice(dataUrl) {
-  const res  = await fetch('/api/ocr', {
+  const res  = await fetch((import.meta.env.VITE_API_URL || '') + '/api/ocr', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image_base64: dataUrl }),

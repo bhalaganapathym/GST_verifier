@@ -70,7 +70,7 @@ async function lookupGTIN(gtin) {
 
 // ── Gemini Vision fallback ──────────────────────────────────────────────────
 async function scanWithAI(dataUrl) {
-  const res  = await fetch('/api/product_scan', {
+  const res  = await fetch((import.meta.env.VITE_API_URL || '') + '/api/product_scan', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image_base64: dataUrl }),
